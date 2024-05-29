@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import XRLayout from "../layouts/XRLayout";
-
+import { Component } from "../pages/Collection";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -8,7 +8,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/collection",
-        lazy: () => import("../pages/Collection"),
+        element: <Component />,
       },
     ],
   },
