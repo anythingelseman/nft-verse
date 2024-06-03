@@ -56,7 +56,7 @@ const Header = (props: any) => {
           </NavLink>
 
           <NavLink
-            to="/my-nft"
+            to="/collection"
             className={({ isActive }) =>
               isActive
                 ? "underline underline-offset-4 "

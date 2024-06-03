@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import WalletPage from "./pages/WalletPage";
@@ -14,11 +14,12 @@ import XRLayout from "./layouts/XRLayout";
 
 function App() {
   const [defaultAccount, setDefaultAccount] = useState<any>(null);
-  const [userBalance, setUserBalance] = useState<string | null>(null);
+  const [userBalance, setUserBalance] = useState<any>(null);
   const [chainId, setChainId] = useState<any>(null);
   const [chains, setChains] = useState<any>([]);
   const [chainName, setChainName] = useState(null);
   const [currency, setCurrency] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChains = async () => {
@@ -50,15 +51,20 @@ function App() {
   };
 
   const accountChangedHandler = (newAccount: any) => {
-    setDefaultAccount(newAccount);
-    getAccountBalance(newAccount.toString());
+    if (Array.isArray(newAccount) && newAccount.length > 0) {
+      setDefaultAccount(newAccount[0]);
+      getAccountBalance(newAccount[0].toString());
+    } else {
+      setDefaultAccount(newAccount);
+      getAccountBalance(newAccount.toString());
+    }
+    navigate("/wallet");
   };
-
   const getAccountBalance = (account: any) => {
     window.ethereum
       .request({ method: "eth_getBalance", params: [account, "latest"] })
       .then((balance: any) => {
-        setUserBalance(ethers.utils.formatEther(balance));
+        setUserBalance(parseFloat(ethers.utils.formatEther(balance)));
       });
   };
 
@@ -86,7 +92,7 @@ function App() {
   );
 
   return (
-    <div className=" h-screen bg-gradient-to-br from-purple-800 to-purple-600 w-full ">
+    <div className="min-h-screen bg-gradient-to-br from-purple-800 to-purple-600 w-full ">
       <Routes>
         <Route path="/" element={<Header defaultAccount={defaultAccount} />}>
           <Route index element={marketplacePage} />
@@ -149,8 +155,8 @@ function App() {
               defaultAccount ? <ChainsPage chains={chains} /> : marketplacePage
             }
           />
-          <Route path="collection" element={<XRLayout />} />
         </Route>
+        <Route path="collection" element={<XRLayout />} />
       </Routes>
       <Toaster position="bottom-left" />
     </div>

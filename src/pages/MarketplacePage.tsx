@@ -117,7 +117,7 @@ const MarketplacePage = (props: any) => {
 
   if (loadingState)
     return (
-      <div className="h-screen flex justify-center items-center">
+      <div className="min-h-screen flex justify-center items-center">
         <h1 className="text-orange-500 text-3xl">Fetching...</h1>
       </div>
     );

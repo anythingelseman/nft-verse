@@ -12,7 +12,7 @@ const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 const MintNFTPage = (props: any) => {
   const navigate = useNavigate();
-  const [fileUrl, setFileUrl] = useState<string | null>(null);
+  const [fileUrl, setFileUrl] = useState<any>();
   const [formInput, updateFormInput] = useState({
     price: "",
     name: "",
@@ -34,6 +34,7 @@ const MintNFTPage = (props: any) => {
 
   async function onChange(e: any) {
     const file = e.target.files[0];
+    console.log("file:", file);
     const formData = new FormData();
     formData.append("file", file);
     try {
@@ -42,14 +43,15 @@ const MintNFTPage = (props: any) => {
         url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
         data: formData,
         headers: {
-          pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-          pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
+          pinata_api_key: import.meta.env.VITE_PINATA_API_KEY,
+          pinata_secret_api_key: import.meta.env.VITE_PINATA_SECRET_API_KEY,
           "Content-Type": "multipart/form-data",
         },
       });
       const ImgHash = `https://gateway.pinata.cloud/ipfs/${resFile.data.IpfsHash}`;
       setFileUrl(ImgHash);
     } catch (err: any) {
+      console.log(err);
       toast.error(err.message);
     }
   }
@@ -92,8 +94,8 @@ const MintNFTPage = (props: any) => {
         url: "https://api.pinata.cloud/pinning/pinJsonToIPFS",
         data: data,
         headers: {
-          pinata_api_key: process.env.REACT_APP_PINATA_API_KEY,
-          pinata_secret_api_key: process.env.REACT_APP_PINATA_SECRET_API_KEY,
+          pinata_api_key: import.meta.env.VITE_PINATA_API_KEY,
+          pinata_secret_api_key: import.meta.env.VITE_PINATA_SECRET_API_KEY,
         },
       });
       const url = `https://gateway.pinata.cloud/ipfs/${resJSON.data.IpfsHash}`;

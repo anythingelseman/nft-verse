@@ -18,11 +18,12 @@ export default function NFT(props: {
   scale?: number;
   rotation?: Euler;
   information: NftInformation;
+  tokenId: any;
+  tokenURI: any;
 }) {
   const { information } = props;
   const [hover, setHover] = useState(false);
   const [near, setNear] = useState(false);
-  const [liked, setLiked] = useState(false);
   const navigate = useNavigate();
   const popup = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
   const nft = useRef<THREE.Group<THREE.Object3DEventMap>>(null);
@@ -78,8 +79,14 @@ export default function NFT(props: {
       </group>
       <group ref={nft} position={props.position} rotation={props.rotation}>
         <RatioImage
-          onPointerMove={() => setHover(true)}
-          onPointerLeave={() => setHover(false)}
+          onPointerMove={() => {
+            console.log("hover true");
+            setHover(true);
+          }}
+          onPointerLeave={() => {
+            console.log("hover false");
+            setHover(false);
+          }}
           url={information.url}
           toneMapped
           position={[0, 0, 0]}
@@ -107,30 +114,12 @@ export default function NFT(props: {
                 platter
                 display={near ? "flex" : "none"}
                 onClick={() => {
-                  setLiked(!liked);
+                  navigate(
+                    `/resell-nft?id=${props.tokenId}&tokenURI=${props.tokenURI}`
+                  );
                 }}
               >
-                <SVG
-                  url="/icons/heart.svg"
-                  depth={3}
-                  color={liked ? "red" : "white"}
-                />
-              </IconButton>
-              <IconButton size="md" platter display={near ? "flex" : "none"}>
                 <SVG url="/icons/cart.svg" depth={3} />
-              </IconButton>
-              <IconButton size="md" platter display={near ? "flex" : "none"}>
-                <SVG url="/icons/information.svg" depth={3} />
-              </IconButton>
-              <IconButton
-                size="md"
-                platter
-                display={near ? "flex" : "none"}
-                onClick={() => {
-                  navigate("/nft");
-                }}
-              >
-                <SVG url="/icons/eye.svg" depth={3} />
               </IconButton>
             </Glass>
           </RootContainer>

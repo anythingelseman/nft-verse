@@ -13,6 +13,7 @@ import {
   Wallet,
 } from "@react-three/uikit-lucide";
 import { Button } from "../components/apfel/button";
+import { useNavigate } from "react-router-dom";
 
 const position = new THREE.Vector3();
 const direction = new THREE.Vector3();
@@ -21,7 +22,7 @@ export default function MainMenu() {
   const camera = useThree((state) => state.camera);
   const ref = useRef<THREE.Mesh>(null);
   const { openMainMenu } = useAppContext();
-
+  const navigate = useNavigate();
   const isVR = true;
 
   useEffect(() => {
@@ -54,9 +55,10 @@ export default function MainMenu() {
               border={1}
               width={50}
               gap={4}
+              onClick={() => navigate("/wallet")}
             >
               <Columns3 height={10} />
-              <Text fontSize={8}>Text</Text>
+              <Text fontSize={8}>Wallet</Text>
             </Button>
             <Button
               flexDirection="column"
@@ -66,41 +68,24 @@ export default function MainMenu() {
               border={1}
               width={50}
               gap={4}
+              onClick={() => navigate("/dashboard")}
             >
               <Home height={10} />
               <Text fontSize={8}>Dashboard</Text>
             </Button>
-            {isVR ? (
-              <Button
-                flexDirection="column"
-                alignItems="center"
-                padding={4}
-                borderRadius={4}
-                border={1}
-                width={50}
-                gap={4}
-              >
-                <LogOut height={10} />
-                <Text fontSize={8} justifyContent="center">
-                  Text
-                </Text>
-              </Button>
-            ) : (
-              <Button
-                flexDirection="column"
-                alignItems="center"
-                padding={4}
-                borderRadius={4}
-                border={1}
-                width={50}
-                gap={4}
-              >
-                <LogIn height={10} />
-                <Text fontSize={8} justifyContent="center">
-                  Text
-                </Text>
-              </Button>
-            )}
+            <Button
+              flexDirection="column"
+              alignItems="center"
+              padding={4}
+              borderRadius={4}
+              border={1}
+              width={50}
+              gap={4}
+              onClick={() => navigate("/mint-nft")}
+            >
+              <Home height={10} />
+              <Text fontSize={8}>Mint NFT</Text>
+            </Button>
 
             <Button
               flexDirection="column"
@@ -110,10 +95,11 @@ export default function MainMenu() {
               border={1}
               flexGrow={1}
               gap={4}
+              onClick={() => navigate("/")}
             >
               <Wallet height={10} />
               <Text fontSize={8} justifyContent="center">
-                Text
+                Marketplace
               </Text>
             </Button>
           </Card>
