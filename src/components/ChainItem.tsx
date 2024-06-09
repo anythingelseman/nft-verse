@@ -26,12 +26,12 @@ const ChainItem = (props: any) => {
     }
   };
   return (
-    <div className="h-60 w-60 bg-purple-900 rounded-xl m-2 p-2 flex flex-col justify-center">
+    <div className="h-60 w-60 bg-[#0B0E11] rounded-xl m-2 p-2 flex flex-col justify-center">
       <a
         target="_blank"
         rel="noopener noreferrer"
         href={infoURL}
-        className="text-center text-2xl font-bold text-orange-500 mb-5 hover:text-orange-700"
+        className="text-center text-2xl font-bold text-[#fcd535] mb-5 hover:text-orange-700"
       >
         {name}
       </a>
@@ -50,7 +50,7 @@ const ChainItem = (props: any) => {
       <div className="flex justify-center">
         <button
           onClick={changeNetwork}
-          className="bg-orange-500 p-2 mt-3 text-white rounded-lg text-xl hover:bg-orange-600"
+          className="bg-[#fcd535] px-4 py-3 mt-3 text-black font-medium rounded-lg text-xl hover:bg-orange-600"
         >
           Add chain
         </button>

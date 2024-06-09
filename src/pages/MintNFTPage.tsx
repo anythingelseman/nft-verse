@@ -139,24 +139,24 @@ const MintNFTPage = (props: any) => {
   //   );
 
   return (
-    <div className="flex justify-center bg-gradient-to-br from-purple-800 to-purple-600">
-      <div className="w-1/2 flex flex-col pb-12 bg-purple-900 px-4 rounded-lg mb-5">
+    <div className="flex justify-center bg-[#2f333c]">
+      <div className="w-1/2 flex flex-col pb-12 bg-[#0B0E11] px-4 rounded-lg mb-5">
         <input
           placeholder="Asset Name"
-          className="mt-8 border rounded p-4"
+          className="mt-8 border rounded p-4 mb-3"
           onChange={(e) =>
             updateFormInput({ ...formInput, name: e.target.value })
           }
         />
         <textarea
           placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
+          className="mt-2 border rounded p-4 mb-2"
           onChange={(e) =>
             updateFormInput({ ...formInput, description: e.target.value })
           }
         />
         <input
-          placeholder="Asset Price in MATIC"
+          placeholder="Asset Price in ETH"
           className="mt-2 border rounded p-4"
           onChange={(e) =>
             updateFormInput({ ...formInput, price: e.target.value })
@@ -173,7 +173,7 @@ const MintNFTPage = (props: any) => {
         )}
         <button
           onClick={listNFTForSale}
-          className="bg-orange-500 p-2 mt-3 text-white rounded-lg text-xl hover:bg-orange-600 w-full"
+          className="bg-[#fcd535] p-2 py-3 mt-3 text-black font-medium rounded-lg text-xl hover:bg-orange-600 w-full"
         >
           Create NFT
         </button>

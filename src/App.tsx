@@ -92,7 +92,7 @@ function App() {
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-800 to-purple-600 w-full ">
+    <div className="min-h-screen bg-[#2f333c] w-full ">
       <Routes>
         <Route path="/" element={<Header defaultAccount={defaultAccount} />}>
           <Route index element={marketplacePage} />

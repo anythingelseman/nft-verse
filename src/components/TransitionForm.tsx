@@ -49,8 +49,8 @@ const TransitionForm = (props: any) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="mt-14 mx-auto bg-purple-900 w-fit p-5 rounded-md">
-        <h1 className="text-center text-2xl font-bold text-orange-500 mb-5">
+      <div className="mt-14 mx-auto bg-[#0B0E11] w-fit p-5 rounded-md">
+        <h1 className="text-center text-2xl font-bold text-[#fcd535] mb-5">
           Transaction Form
         </h1>
         <div>
@@ -75,7 +75,7 @@ const TransitionForm = (props: any) => {
         <div className="flex justify-center">
           <button
             type="submit"
-            className="bg-orange-500 p-2 mt-3 text-white rounded-lg text-xl hover:bg-orange-600 "
+            className="bg-[#fcd535] px-4 py-3 mt-3 text-black rounded-lg text-xl hover:bg-orange-600 "
           >
             Pay now
           </button>

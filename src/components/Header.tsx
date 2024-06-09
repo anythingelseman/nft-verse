@@ -11,10 +11,10 @@ const Header = (props: any) => {
 
   return (
     <>
-      <div className=" relative w-full bg-purple-900 flex justify-between items-center text-white py-1 mb-5">
+      <div className=" relative w-full bg-[#0B0E11] flex justify-between items-center text-white py-1 mb-5">
         <div className="flex items-center">
           <img src={Logo} alt="logo" width={55} height={55} />
-          <h1 className="hidden md:block font-bold text-2xl text-orange-500">
+          <h1 className="hidden md:block font-bold text-2xl text-[#fcd535]">
             NFT MARKETPLACE
           </h1>
         </div>
@@ -110,14 +110,13 @@ const Header = (props: any) => {
                 : "absolute text-black bg-white  right-[20px] top-[63px] z-10 w-48 "
             }
           >
-            <div className="hover:bg-purple-900 hover:text-white px-4 py-2 ">
+            <div className="hover:bg-[#0B0E11] hover:text-white px-4 py-2 ">
               <NavLink to="/wallet" onClick={dropdownHandler}>
                 Wallet
               </NavLink>
             </div>
-            <div className="hover:bg-purple-900 hover:text-white px-4 py-2">
+            <div className="hover:bg-[#0B0E11] hover:text-white px-4 py-2">
               <NavLink to="/networks" onClick={dropdownHandler}>
-                {" "}
                 Networks
               </NavLink>
             </div>

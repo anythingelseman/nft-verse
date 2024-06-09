@@ -25,7 +25,7 @@ const ChainsPage = (props: any) => {
   ));
 
   return (
-    <div className=" bg-gradient-to-br from-purple-800 to-purple-600 w-full text-white">
+    <div className=" bg-[#2f333c] w-full text-white">
       <div className="flex mx-auto w-[400px] rounded-md bg-white">
         <div className="text-black bg-white rounded-md p-2 font-bold text-md">
           Search Networks

@@ -3,5 +3,10 @@ module.exports = {
   theme: {
     extend: {},
   },
+  variants: {
+    extend: {
+      borderColor: ["last"],
+    },
+  },
   plugins: [require("tailwind-scrollbar-hide")],
 };

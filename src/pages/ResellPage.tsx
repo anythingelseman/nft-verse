@@ -11,6 +11,7 @@ const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 const ResellPage = (props: any) => {
   const [formInput, updateFormInput] = useState({ price: "", image: "" });
+  const [nft, setNft] = useState<any>();
   const navigate = useNavigate();
   let [searchParams, setSearchParams] = useSearchParams();
   const id = searchParams.get("id");
@@ -26,7 +27,15 @@ const ResellPage = (props: any) => {
       if (!tokenURI) return;
       const meta = await axios.get(tokenURI);
       const nftData = JSON.parse(Object.keys(meta.data)[0]);
-      updateFormInput((state) => ({ ...state, image: nftData.image }));
+      setNft({
+        name: nftData.name,
+        description: nftData.description,
+        image: nftData.image,
+      });
+      updateFormInput((state) => ({
+        ...state,
+        image: nftData.image,
+      }));
     } catch (err: any) {
       toast.error(err.message);
     }
@@ -65,10 +74,10 @@ const ResellPage = (props: any) => {
   //   );
 
   return (
-    <div className="flex justify-center bg-gradient-to-br from-purple-800 to-purple-600 w-full">
+    <div className="flex justify-center bg-[#181a20] w-full">
       <div className="w-1/2 flex flex-col pb-12">
         <input
-          placeholder="Asset Price in MATIC"
+          placeholder="Asset Price in ETH"
           className="mt-2 border rounded p-4"
           onChange={(e) =>
             updateFormInput({ ...formInput, price: e.target.value })
@@ -82,6 +91,15 @@ const ResellPage = (props: any) => {
             alt="beautiful img"
           />
         )}
+
+        <p className="text-2xl font-semibold text-[#fcd535] h-[30px] text-center mt-4">
+          {nft.name}
+        </p>
+
+        <div className="text-center text-xl mt-4 text-white ">
+          {nft.description}
+        </div>
+
         <button
           onClick={listNFTForSale}
           className="bg-orange-500 p-2 mt-8 text-white rounded-lg text-xl hover:bg-orange-600 w-full"

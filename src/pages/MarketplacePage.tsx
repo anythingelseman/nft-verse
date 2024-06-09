@@ -85,7 +85,7 @@ const MarketplacePage = (props: any) => {
   if (!(window.ethereum && window.ethereum.isMetaMask))
     return (
       <div className="h-screen flex justify-center items-center">
-        <h1 className="text-orange-500 text-3xl">
+        <h1 className="text-white text-3xl">
           Please install metamask first to use this website.
         </h1>
       </div>
@@ -100,7 +100,7 @@ const MarketplacePage = (props: any) => {
 
         <button
           onClick={props.connectWalletHandler}
-          className="bg-orange-500 p-2 mt-3 text-white rounded-lg text-xl hover:bg-orange-600"
+          className="bg-[#fcd535] px-5 py-3 mt-3 text-black rounded-lg text-xl hover:bg-orange-600 font-medium"
         >
           Connect wallet
         </button>
@@ -118,18 +118,18 @@ const MarketplacePage = (props: any) => {
   if (loadingState)
     return (
       <div className="min-h-screen flex justify-center items-center">
-        <h1 className="text-orange-500 text-3xl">Fetching...</h1>
+        <h1 className="text-[#fcd535] text-3xl">Fetching...</h1>
       </div>
     );
 
   if (loadingState === false && !nfts.length)
     return (
-      <h1 className="px-20 py-10 text-3xl text-orange-500">
+      <h1 className="px-20 py-10 text-3xl text-[#fcd535]">
         No items in marketplace
       </h1>
     );
   return (
-    <div className="bg-gradient-to-br from-purple-800 to-purple-600 w-full">
+    <div className="bg-gradient-to-br bg-[#2f333c] w-full">
       <div className="flex mx-auto w-[400px] rounded-md bg-white">
         <div className="text-black bg-white rounded-md p-2 font-bold text-md">
           Search NFTs
@@ -145,15 +145,15 @@ const MarketplacePage = (props: any) => {
         {searchedNFT.map((nft, i) => (
           <div
             key={i}
-            className="border shadow rounded-xl overflow-hidden bg-purple-900 w-[300px] h-[450px] mb-4"
+            className=" shadow rounded-xl overflow-hidden bg-[#0B0E11] w-[300px] h-[450px] mb-4"
           >
             <img
-              className="w-full h-[200px] object-contain bg-white"
+              className="w-full h-[200px] object-contain bg-[#0B0E11]"
               src={nft.image}
               alt={nft.name}
             />
             <div className="p-4 h-[130px]">
-              <p className="text-2xl font-semibold text-orange-500 h-[30px]">
+              <p className="text-2xl font-semibold text-[#fcd535] h-[30px]">
                 {nft.name}
               </p>
               <div className="h-[100px] text-white overflow-y-auto scrollbar-hide">
@@ -161,11 +161,11 @@ const MarketplacePage = (props: any) => {
               </div>
             </div>
             <div className="p-4 ">
-              <p className="text-2xl font-bold text-orange-500">
-                {nft.price} MATIC
+              <p className="text-2xl font-bold text-[#fcd535]">
+                {nft.price} ETH
               </p>
               <button
-                className="bg-orange-500 p-2 mt-3 text-white rounded-lg text-xl hover:bg-orange-600 w-full"
+                className="bg-[#fcd535] p-2 mt-3 text-black font-medium rounded-lg text-xl hover:bg-orange-600 w-full"
                 onClick={() => buyNft(nft)}
               >
                 Buy

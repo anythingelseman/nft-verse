@@ -84,7 +84,7 @@ const MyNFTPage = (props: any) => {
               />
               <div className="p-2 bg-purple-900 h-[150px]">
                 <p className="text-2xl font-bold text-white">
-                  Price - {nft.price} MATIC
+                  Price - {nft.price} ETH
                 </p>
                 <button
                   className="bg-orange-500 p-2 mt-8 text-white rounded-lg text-xl hover:bg-orange-600 w-full"

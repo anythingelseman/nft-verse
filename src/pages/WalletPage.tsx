@@ -2,10 +2,10 @@ import TransitionForm from "../components/TransitionForm";
 
 const WalletPage = (props: any) => {
   return (
-    <div className=" bg-gradient-to-br from-purple-800 to-purple-600 w-full ">
+    <div className=" bg-[#2f333c] w-full ">
       <div className="flex flex-col items-center text-white lg:flex-row lg:justify-around">
-        <div className="w-fit h-48 bg-purple-900 p-6 rounded-xl">
-          <h1 className="text-center text-2xl font-bold text-orange-500">
+        <div className="w-fit h-48 bg-[#0B0E11] p-6 rounded-xl">
+          <h1 className="text-center text-2xl font-bold text-[#fcd535]">
             Wallet overview
           </h1>
           <div className="flex flex-col justify-evenly h-full">
@@ -22,8 +22,8 @@ const WalletPage = (props: any) => {
           </div>
         </div>
 
-        <div className="w-fit h-48 bg-purple-900 p-6 rounded-xl mt-5 lg:mt-0">
-          <h1 className="text-center text-2xl font-bold text-orange-500">
+        <div className="w-fit h-48 bg-[#0B0E11] p-6 rounded-xl mt-5 lg:mt-0">
+          <h1 className="text-center text-2xl font-bold text-[#fcd535]">
             Current chain
           </h1>
           <div className="flex flex-col justify-evenly h-full">
