@@ -585,8 +585,8 @@
       "artifacts": []
     },
     "D:\\daihoc\\datn\\nft-verse\\contracts\\NFTMarketplace.sol": {
-      "lastModificationDate": 1717725993696,
-      "contentHash": "328a8625437a2de9f90be7614887264f",
+      "lastModificationDate": 1718171148483,
+      "contentHash": "8547ae11a81afe7ed9c2efccf29aa853",
       "sourceName": "contracts/NFTMarketplace.sol",
       "solcConfig": {
         "version": "0.8.4",

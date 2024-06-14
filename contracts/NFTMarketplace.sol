@@ -149,8 +149,6 @@ contract NFTMarketplace is ERC721URIStorage {
         );
     }
 
-    /* Creates the sale of a marketplace item */
-    /* Transfers ownership of the item, as well as funds between parties */
     function createMarketSale(uint256 tokenId) public payable {
         uint256 price = idToMarketItem[tokenId].price;
         address seller = idToMarketItem[tokenId].seller;
@@ -186,6 +184,13 @@ contract NFTMarketplace is ERC721URIStorage {
             }
         }
         revert("Transaction not found");
+    }
+
+    function fetchMarketItemById(
+        uint256 tokenId
+    ) public view returns (MarketItem memory) {
+        require(idToMarketItem[tokenId].tokenId != 0, "Market item not found");
+        return idToMarketItem[tokenId];
     }
 
     function fetchMarketItems() public view returns (MarketItem[] memory) {
@@ -228,27 +233,26 @@ contract NFTMarketplace is ERC721URIStorage {
         return items;
     }
 
-    function fetchItemsListed() public view returns (MarketItem[] memory) {
-        uint256 totalItemCount = _tokenIds.current();
-        uint256 itemCount = 0;
-        uint256 currentIndex = 0;
+    function unList(uint256 tokenId) public {
+        MarketItem storage item = idToMarketItem[tokenId];
+        require(
+            item.seller == msg.sender,
+            "Only the seller can unlist the item"
+        );
+        require(
+            item.owner == address(this),
+            "Item must be listed on the marketplace"
+        );
 
-        for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i + 1].seller == msg.sender) {
-                itemCount += 1;
-            }
-        }
+        _transfer(address(this), msg.sender, tokenId);
 
-        MarketItem[] memory items = new MarketItem[](itemCount);
-        for (uint256 i = 0; i < totalItemCount; i++) {
-            if (idToMarketItem[i + 1].seller == msg.sender) {
-                uint256 currentId = i + 1;
-                MarketItem storage currentItem = idToMarketItem[currentId];
-                items[currentIndex] = currentItem;
-                currentIndex += 1;
-            }
-        }
-        return items;
+        item.owner = payable(msg.sender);
+        item.sold = true;
+        _itemsSold.increment();
+
+        uint256 transactionId = _fetchLatestTransactionByTokenId(tokenId);
+        Transaction storage transaction = idToTransactionItem[transactionId];
+        transaction.status = "CANCELLED";
     }
 
     function fetchTransactionBySeller()

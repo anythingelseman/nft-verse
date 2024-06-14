@@ -5,13 +5,7 @@ import * as THREE from "three";
 
 import { useAppContext } from "../contexts/AppProvider";
 import { Card } from "../components/apfel/card";
-import {
-  Columns3,
-  Home,
-  LogIn,
-  LogOut,
-  Wallet,
-} from "@react-three/uikit-lucide";
+import { Columns3, Home, Wallet } from "@react-three/uikit-lucide";
 import { Button } from "../components/apfel/button";
 import { useNavigate } from "react-router-dom";
 
@@ -23,7 +17,6 @@ export default function MainMenu() {
   const ref = useRef<THREE.Mesh>(null);
   const { openMainMenu } = useAppContext();
   const navigate = useNavigate();
-  const isVR = true;
 
   useEffect(() => {
     if (openMainMenu && camera && ref.current) {

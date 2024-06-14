@@ -4,7 +4,6 @@ Command: npx gltfjsx@6.2.16 public/nft_gallery.glb --types
 */
 
 import * as THREE from "three";
-import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -17,11 +16,6 @@ type GLTFResult = GLTF & {
     Baked: THREE.MeshBasicMaterial;
   };
 };
-
-type ContextType = Record<
-  string,
-  React.ForwardRefExoticComponent<JSX.IntrinsicElements["mesh"]>
->;
 
 type GroupProps = JSX.IntrinsicElements["group"];
 

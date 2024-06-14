@@ -66,6 +66,13 @@ const ResellPage = (props: any) => {
     }
   }
 
+  if (!nft)
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <h1 className="text-orange-500 text-3xl">Fetching...</h1>
+      </div>
+    );
+
   // if (props.chainId != "80001")
   //   return (
   //     <h1 className="text-orange-500 text-3xl text-center">
@@ -74,7 +81,7 @@ const ResellPage = (props: any) => {
   //   );
 
   return (
-    <div className="flex justify-center bg-[#181a20] w-full">
+    <div className="flex justify-center w-full">
       <div className="w-1/2 flex flex-col pb-12">
         <input
           placeholder="Asset Price in ETH"

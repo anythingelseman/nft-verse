@@ -5,7 +5,7 @@ import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketp
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
-// const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+import mintNft from "./../images/mintNft.webp";
 
 const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 // const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
@@ -18,19 +18,6 @@ const MintNFTPage = (props: any) => {
     name: "",
     description: "",
   });
-
-  // async function onChange(e) {
-  //   const file = e.target.files[0];
-  //   try {
-  //     const added = await client.add(file, {
-  //       progress: (prog) => console.log(`received: ${prog}`),
-  //     });
-  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-  //     setFileUrl(url);
-  //   } catch (err) {
-  //     toast.error(err.message);
-  //   }
-  // }
 
   async function onChange(e: any) {
     const file = e.target.files[0];
@@ -55,27 +42,6 @@ const MintNFTPage = (props: any) => {
       toast.error(err.message);
     }
   }
-
-  // async function uploadToIPFS() {
-  //   try {
-  //     const { name, description, price } = formInput;
-  //     if (!name || !description || !price || !fileUrl)
-  //       throw Error("Please fill out the form completely");
-
-  //     const data = JSON.stringify({
-  //       name,
-  //       description,
-  //       image: fileUrl,
-  //     });
-
-  //     const added = await client.add(data);
-  //     const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-
-  //     return url;
-  //   } catch (err) {
-  //     toast.error(err.message);
-  //   }
-  // }
 
   async function uploadToIPFS() {
     try {
@@ -131,16 +97,15 @@ const MintNFTPage = (props: any) => {
     }
   }
 
-  // if (props.chainId != "80001")
-  //   return (
-  //     <h1 className="text-orange-500 text-3xl text-center">
-  //       Please change your network to Mumbai Testnet.
-  //     </h1>
-  //   );
-
   return (
     <div className="flex justify-center bg-[#2f333c]">
       <div className="w-1/2 flex flex-col pb-12 bg-[#0B0E11] px-4 rounded-lg mb-5">
+        <div className="flex content-center justify-center">
+          <img src={mintNft} alt="Mint NFT" width={400} height={400} />
+        </div>
+        <p className="text-[#fcd535] text-3xl text-center font-medium my-4">
+          Create your own NFT now !
+        </p>
         <input
           placeholder="Asset Name"
           className="mt-8 border rounded p-4 mb-3"

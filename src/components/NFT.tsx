@@ -72,6 +72,9 @@ export default function NFT(props: {
                 <Text fontSize={6} opacity={0.7}>
                   {information.description}
                 </Text>
+                <Text fontSize={6} opacity={0.7}>
+                  Price: {information.price} MATIC
+                </Text>
               </Card>
             </Container>
           </Root>

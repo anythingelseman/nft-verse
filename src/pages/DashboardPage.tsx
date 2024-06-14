@@ -56,14 +56,14 @@ const DashboardPage = (props: any) => {
   if (loadingState)
     return (
       <div className="h-screen flex justify-center items-center">
-        <h1 className="bg-[#fcd535] text-3xl">Fetching...</h1>
+        <h1 className="text-[#fcd535] text-3xl">Fetching...</h1>
       </div>
     );
 
   if (!loadingState && !transactions.length)
     return (
       <h1 className="py-10 px-20 text-3xl text-[#fcd535] text-center">
-        You have not list any NFT yet.
+        You have not listed any NFT yet.
       </h1>
     );
 

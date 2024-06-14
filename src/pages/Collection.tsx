@@ -84,6 +84,7 @@ export function Component() {
             name: nft.name,
             description: nft.description,
             url: nft.image,
+            price: nft.price,
           }}
           position={nftPositionHandler(i)}
           scale={1.2}
@@ -93,41 +94,6 @@ export function Component() {
         />
       ))}
 
-      {/* <NFT
-        information={{
-          name: "NFT",
-          description: "This is an NFT",
-          url: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/038273138030151.6215b21e27e00.jpg",
-        }}
-        position={[-6, 1.5, -3.94]}
-        scale={1.2}
-        tokenId="1"
-        tokenURI="1"
-      />
-
-      <NFT
-        information={{
-          name: "NFT 2",
-          description: "Another NFT",
-          url: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/038273138030151.6215b21e27e00.jpg",
-        }}
-        position={[-2, 1.5, -3.94]}
-        scale={1.2}
-        tokenId="1"
-        tokenURI="1"
-      />
-
-      <NFT
-        information={{
-          name: "NFT 3",
-          description: "Another NFT",
-          url: "https://mir-s3-cdn-cf.behance.net/project_modules/fs/038273138030151.6215b21e27e00.jpg",
-        }}
-        position={[-2, 1.5, 3.94]}
-        scale={1.2}
-        tokenId="1"
-        tokenURI="1"
-      /> */}
       <Suspense fallback={null}>
         <Gallery numGallery={Math.floor(nfts.length / 6) + 1} />
       </Suspense>

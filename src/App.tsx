@@ -11,6 +11,7 @@ import DashboardPage from "./pages/DashboardPage";
 import MyNFTPage from "./pages/MyNFTPage";
 import ResellPage from "./pages/ResellPage";
 import XRLayout from "./layouts/XRLayout";
+import DetailPage from "./pages/DetailPage";
 
 function App() {
   const [defaultAccount, setDefaultAccount] = useState<any>(null);
@@ -58,7 +59,7 @@ function App() {
       setDefaultAccount(newAccount);
       getAccountBalance(newAccount.toString());
     }
-    navigate("/wallet");
+    // navigate("/wallet");
   };
   const getAccountBalance = (account: any) => {
     window.ethereum
@@ -132,6 +133,17 @@ function App() {
               )
             }
           />
+          <Route
+            path="nft/:id"
+            element={
+              defaultAccount ? (
+                <DetailPage chainId={chainId} />
+              ) : (
+                marketplacePage
+              )
+            }
+          />
+
           <Route
             path="wallet"
             element={

@@ -1,6 +1,11 @@
 // TransactionTable.tsx
+import { ethers } from "ethers";
 import React from "react";
+import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
+const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 interface Transaction {
   transactionId: any;
   price: any;
@@ -21,6 +26,8 @@ interface TransactionTableProps {
 const TransactionTable: React.FC<TransactionTableProps> = ({
   transactions,
 }) => {
+  const navigate = useNavigate();
+
   function formatTimestamp(hexTimestamp: any) {
     const timestampDec = hexTimestamp.toString();
 
@@ -29,6 +36,23 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
     const formattedDate = date.toLocaleString();
 
     return formattedDate;
+  }
+
+  async function unList(tokenId: any) {
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const contract = new ethers.Contract(
+        marketplaceAddress,
+        NFTMarketplace.abi,
+        signer
+      );
+      let transaction = await contract.unList(tokenId);
+      await transaction.wait();
+      navigate("/");
+    } catch (err: any) {
+      toast.error(err.message);
+    }
   }
 
   return (
@@ -43,6 +67,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
               <th className="text-left px-4 py-5">Status</th>
               <th className="text-left px-4 py-5">Listed Date</th>
               <th className="text-left px-4 py-5">Sold Date</th>
+              <th className="text-left px-4 py-5">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -60,7 +85,10 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
                 </td>
 
                 <td className="text-left px-4 py-5">
-                  {transaction.status == "LISTING" ? "None" : transaction.buyer}
+                  {transaction.status == "LISTING" ||
+                  transaction.status == "CANCELLED"
+                    ? "None"
+                    : transaction.buyer}
                 </td>
 
                 <td className="text-left px-4 py-5">{transaction.price}</td>
@@ -69,9 +97,18 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
                   {formatTimestamp(transaction.listedDate)}
                 </td>
                 <td className=" px-4 py-2">
-                  {transaction.status == "LISTING"
+                  {transaction.status == "LISTING" ||
+                  transaction.status == "CANCELLED"
                     ? "None"
                     : formatTimestamp(transaction.soldDate)}
+                </td>
+                <td className=" px-4 py-2">
+                  <button
+                    onClick={() => unList(transaction.tokenId)}
+                    className="bg-orange-500 p-2 text-white rounded-lg text-xl hover:bg-orange-600 w-full"
+                  >
+                    Unlist NFT
+                  </button>
                 </td>
               </tr>
             ))}
