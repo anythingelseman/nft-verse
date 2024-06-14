@@ -98,39 +98,19 @@ function App() {
           <Route index element={marketplacePage} />
           <Route
             path="dashboard"
-            element={
-              defaultAccount ? (
-                <DashboardPage chainId={chainId} />
-              ) : (
-                marketplacePage
-              )
-            }
+            element={defaultAccount ? <DashboardPage /> : marketplacePage}
           />
           <Route
             path="my-nft"
-            element={
-              defaultAccount ? <MyNFTPage chainId={chainId} /> : marketplacePage
-            }
+            element={defaultAccount ? <MyNFTPage /> : marketplacePage}
           />
           <Route
             path="mint-nft"
-            element={
-              defaultAccount ? (
-                <MintNFTPage chainId={chainId} />
-              ) : (
-                marketplacePage
-              )
-            }
+            element={defaultAccount ? <MintNFTPage /> : marketplacePage}
           />
           <Route
             path="resell-nft"
-            element={
-              defaultAccount ? (
-                <ResellPage chainId={chainId} />
-              ) : (
-                marketplacePage
-              )
-            }
+            element={defaultAccount ? <ResellPage /> : marketplacePage}
           />
           <Route
             path="nft/:id"
