@@ -6,7 +6,7 @@ import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketp
 const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 // const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
 
-const MyNFTPage = (props: any) => {
+const MyNFTPage = () => {
   const navigate = useNavigate();
   const [nfts, setNfts] = useState<any[]>([]);
   const [loadingState, setLoadingState] = useState(true);

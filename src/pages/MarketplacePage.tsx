@@ -2,7 +2,6 @@ import { ethers } from "ethers";
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-import toast from "react-hot-toast";
 import HomeBanner from "../components/HomeBanner";
 import { useNavigate } from "react-router-dom";
 

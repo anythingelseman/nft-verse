@@ -9,11 +9,11 @@ import toast from "react-hot-toast";
 const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 // const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
 
-const ResellPage = (props: any) => {
+const ResellPage = () => {
   const [formInput, updateFormInput] = useState({ price: "", image: "" });
   const [nft, setNft] = useState<any>();
   const navigate = useNavigate();
-  let [searchParams, setSearchParams] = useSearchParams();
+  let [searchParams] = useSearchParams();
   const id = searchParams.get("id");
   const tokenURI = searchParams.get("tokenURI");
   const { image, price } = formInput;
