@@ -11,17 +11,17 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
-    // mumbai: {
-    //   url: "https://polygon-mumbai.g.alchemy.com/v2/FaVhw7acfd6XMPRyTL3SKXrPauzAkksF",
-    //   accounts: [
-    //     "8c2771b8899527c673d73f3e8bbf8bd7144a3f509e4cd1448a6b0b09d1707f14",
-    //   ],
-    //   matic: {
-    //     url: "https://polygon-mumbai.g.alchemy.com/v2/FaVhw7acfd6XMPRyTL3SKXrPauzAkksF",
-    //     accounts: [
-    //       "8c2771b8899527c673d73f3e8bbf8bd7144a3f509e4cd1448a6b0b09d1707f14",
-    //     ],
-    //   },
-    // },
+    mumbai: {
+      url: "https://polygon-amoy.g.alchemy.com/v2/IupynVF5yWkCysI40cqtzsnvtDeAT4Sr",
+      accounts: [
+        "2659e8c5d3e1f43dc1b9e61e75cc0f4d919aa226156f85ef724197d6114e6dd7",
+      ],
+      matic: {
+        url: "https://polygon-amoy.g.alchemy.com/v2/IupynVF5yWkCysI40cqtzsnvtDeAT4Sr",
+        accounts: [
+          "2659e8c5d3e1f43dc1b9e61e75cc0f4d919aa226156f85ef724197d6114e6dd7",
+        ],
+      },
+    },
   },
 };

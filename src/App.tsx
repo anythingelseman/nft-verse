@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
 import WalletPage from "./pages/WalletPage";
@@ -20,6 +20,7 @@ function App() {
   const [chains, setChains] = useState<any>([]);
   const [chainName, setChainName] = useState(null);
   const [currency, setCurrency] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChains = async () => {
@@ -58,7 +59,7 @@ function App() {
       setDefaultAccount(newAccount);
       getAccountBalance(newAccount.toString());
     }
-    // navigate("/wallet");
+    navigate("/wallet");
   };
   const getAccountBalance = (account: any) => {
     window.ethereum

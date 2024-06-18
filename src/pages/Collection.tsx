@@ -7,8 +7,7 @@ import { ethers } from "ethers";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
-const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-// const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
+const marketplaceAddress = import.meta.env.VITE_AMOY_ADDRESS;
 
 export function Component() {
   const [nfts, setNfts] = useState<any[]>([]);

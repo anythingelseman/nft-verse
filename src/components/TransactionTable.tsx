@@ -63,7 +63,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
             <tr>
               <th className="text-left px-4 py-5 ">NFT</th>
               <th className="text-left px-4 py-5">Buyer</th>
-              <th className="text-left px-4 py-5">Price (ETH)</th>
+              <th className="text-left px-4 py-5">Price (MATIC)</th>
               <th className="text-left px-4 py-5">Status</th>
               <th className="text-left px-4 py-5">Listed Date</th>
               <th className="text-left px-4 py-5">Sold Date</th>
@@ -78,8 +78,8 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
               >
                 <td className="text-left px-4 py-5">
                   <img
-                    className="w-[200px] object-contain"
-                    width="200px"
+                    className="w-[100px] object-contain"
+                    width="100px"
                     src={transaction.image}
                   />
                 </td>
@@ -87,7 +87,7 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
                 <td className="text-left px-4 py-5">
                   {transaction.status == "LISTING" ||
                   transaction.status == "CANCELLED"
-                    ? "None"
+                    ? "---"
                     : transaction.buyer}
                 </td>
 
@@ -99,16 +99,20 @@ const TransactionTable: React.FC<TransactionTableProps> = ({
                 <td className=" px-4 py-2">
                   {transaction.status == "LISTING" ||
                   transaction.status == "CANCELLED"
-                    ? "None"
+                    ? "---"
                     : formatTimestamp(transaction.soldDate)}
                 </td>
                 <td className=" px-4 py-2">
-                  <button
-                    onClick={() => unList(transaction.tokenId)}
-                    className="bg-orange-500 p-2 text-white rounded-lg text-xl hover:bg-orange-600 w-full"
-                  >
-                    Unlist NFT
-                  </button>
+                  {transaction.status == "LISTING" ? (
+                    <button
+                      onClick={() => unList(transaction.tokenId)}
+                      className="bg-orange-500 p-2 text-white rounded-lg text-xl hover:bg-orange-600 w-full"
+                    >
+                      Unlist NFT
+                    </button>
+                  ) : (
+                    <p className="text-center">---</p>
+                  )}
                 </td>
               </tr>
             ))}

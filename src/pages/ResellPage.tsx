@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-// const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
+const marketplaceAddress = import.meta.env.VITE_AMOY_ADDRESS;
 
 const ResellPage = () => {
   const [formInput, updateFormInput] = useState({ price: "", image: "" });
@@ -84,7 +83,7 @@ const ResellPage = () => {
     <div className="flex justify-center w-full">
       <div className="w-1/2 flex flex-col pb-12">
         <input
-          placeholder="Asset Price in ETH"
+          placeholder="Asset Price in MATIC"
           className="mt-2 border rounded p-4"
           onChange={(e) =>
             updateFormInput({ ...formInput, price: e.target.value })

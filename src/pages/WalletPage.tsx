@@ -16,7 +16,10 @@ const WalletPage = (props: any) => {
             <div className="flex justify-between">
               <p>Balance: </p>
               <p>
-                {props.userBalance} {props.currency}
+                {props.userBalance
+                  ? parseFloat(props.userBalance.toFixed(4))
+                  : ""}
+                {props.currency}
               </p>
             </div>
           </div>

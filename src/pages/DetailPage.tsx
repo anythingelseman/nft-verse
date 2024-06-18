@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 import NFTMarketplace from "../artifacts/contracts/NFTMarketplace.sol/NFTMarketplace.json";
 import toast from "react-hot-toast";
 
-const marketplaceAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
-// const marketplaceAddress = "0x358d95F5EAb6Ea0D89bfadF62889c7eF542d6c41";
+const marketplaceAddress = import.meta.env.VITE_AMOY_ADDRESS;
 
 const DetailPage = (props: any) => {
   const { id } = useParams();
